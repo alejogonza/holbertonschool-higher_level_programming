@@ -8,13 +8,14 @@
  */
 int check_cycle(listint_t *list)
 {
-	const listint_t *listone, *listwo = NULL;
+	const listint_t *listone = NULL, *listwo = NULL;
 
 
 	if (list == NULL)
 		return (0);
 
-	listone, listwo = list;
+	listone = list;
+	listwo = list;
 
 	while (listone && listwo && listwo->next)
 	{

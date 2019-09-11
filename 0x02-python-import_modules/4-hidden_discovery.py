@@ -4,4 +4,4 @@ if __name__ == "__main__":
     files = dir(hidden_4)
     for names in files:
         if names[0] != "_":
-            print('{}'.format(n))
+            print('{}'.format(names))

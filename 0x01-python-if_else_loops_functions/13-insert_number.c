@@ -1,45 +1,45 @@
 #include "lists.h"
-
 /**
  * insert_node - entry point
  * Description: inserts a new node
- * @head: head to list.
+ * @head: head to list
  * @number: new position
  * Return: list of the node
  */
 listint_t *insert_node(listint_t **head, int number)
 {
-	listint_t *create, *temp, *auxiliar;
+	listint_t *alloc, *redux;
 
-	temp = *head;
-	create = malloc(sizeof(listint_t));
-
-	if (create == NULL)
+	if (head == NULL)
 		return (NULL);
-
-	while (temp != NULL)
-	{
-		if (temp->n > number)
-			break;
-		auxiliar = temp;
-		temp = temp->next;
-	}
-
-	create->n = number;
-
+	alloc = malloc(sizeof(listint_t));
+	if (!alloc)
+		return (NULL);
+	alloc->n = number;
 	if (*head == NULL)
 	{
-		create->next = NULL;
-		*head = create;
+		alloc->next = *head;
+		*head = alloc;
+		return (*head);
 	}
-	else
+	redux = *head;
+	if (redux->n > alloc->n)
 	{
-		create->next = temp;
-		if (temp == *head)
-			*head = create;
-		else
-			auxiliar->next = create;
+		alloc->next = redux;
+		redux = alloc;
+		*head = redux;
+		return (redux);
 	}
-
-	return (create);
+	for (redux = *head; redux && redux->next; redux = redux->next)
+	{
+		if ((redux->next)->n > alloc->n)
+		{
+			alloc->next = redux->next;
+			redux->next = alloc;
+			return (redux->next);
+		}
+	}
+	alloc->next = NULL;
+	redux->next = alloc;
+	return (redux->next);
 }

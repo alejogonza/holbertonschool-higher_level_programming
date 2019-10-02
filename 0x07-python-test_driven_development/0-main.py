@@ -1,11 +1,11 @@
 #!/usr/bin/python3
 add_integer = __import__('0-add_integer').add_integer
 try:
-    print("1:",add_integer(2, 2))
+    print("1:",add_integer(-2, 4))
 except Exception as e:
     print(e)
 try:
-    print("2:",add_integer(-2, -4))
+    print("2:",add_integer(5.0, -4.8))
 except Exception as e:
     print(e)
 try:

@@ -1,0 +1,101 @@
+==============================
+ Err Module for ``0-add_integer``
+==============================
+
+- test file for the module
+
+==============================
+            TESTS
+==============================
+
+  Import module:
+
+  >>> add_integer = __import__('0-add_integer').add_integer
+
+  Adding two numbers:
+
+  >>> add_integer(2, 2)
+    4
+
+  Adding two numbers with ints:
+
+  >>> add_integer(-2, 4)
+  2
+
+  This function works with floats:
+
+  >>> add_integer(5.0, -4.8)
+  0.2
+
+  More than 2 args:
+
+  >>> add_integer(1, 7, 1)
+  Traceback (most recent call last):
+  ...
+  TypeError: add_integer() takes 2 positional arguments but 3 were given
+
+  Just one arg:
+
+  >>> add_integer(2)
+  100
+
+  Just None:
+
+    >>> add_integer(None)
+    Traceback (most recent call last):
+	      ...
+    TypeError: a must be an integer
+
+  Adding two numbers a=str b=int:
+
+    >>> add_integer('2', 2)
+    Traceback (most recent call last):
+              ...
+    TypeError: b must be an integer
+
+  Adding two numbers a=int b=str:
+
+    >>> add_integer(2, '2')
+    Traceback (most recent call last):
+              ...
+    TypeError: a must be an integer
+
+
+  Adding two numbers a=int b=float:
+
+  >>> add_integer(5, 5.0)
+  10
+
+  Adding two numbers a=float b=int:
+
+  >>> add_integer(5.0, 5)
+  10
+
+  Adding two args a =bool b=int:
+
+  >>> add_integer(True, 2)
+  3
+
+  Adding two args a =bool b=bool:
+
+  >>> add_integer(False, True)
+  1
+
+  Adding two args a =list b=int:
+
+  >>> add_integer([1, 2, 3], 4)
+  Traceback (most recent call last):
+  ...
+  TypeError: a must be an integer
+
+  Adding two numbers a=int b=bigint:
+
+  >>> add_integer(1, 999999999999)
+  1000000000000
+
+  No args:
+
+  >>> add_integer()
+  Traceback (most recent call last):
+  ...
+  TypeError: add_integer() missing 2 required positional arguments: 'a' and 'b'

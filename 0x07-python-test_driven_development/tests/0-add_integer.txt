@@ -13,9 +13,8 @@
   >>> add_integer = __import__('0-add_integer').add_integer
 
   Adding two numbers:
-
   >>> add_integer(2, 2)
-    4
+  4
 
   Adding two numbers with ints:
 

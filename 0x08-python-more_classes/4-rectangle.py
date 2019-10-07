@@ -6,6 +6,7 @@ class Rectangle:
     def __init__(self, width=0, height=0):
 
         self.__width = width
+        __dict__ = {}
         self.__height = height
 
     @property
@@ -59,4 +60,7 @@ class Rectangle:
             return (string)
 
     def __repr__(self):
-        return("Rectangle ({:d}, {:d})".format(self.__width, self.__height))
+        if self.width == 0 or self.height == 0:
+            return {}
+        rep = "Rectangle({}, {})".format(self.width, self.height)
+        return(rep)

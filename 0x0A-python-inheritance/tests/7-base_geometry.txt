@@ -12,6 +12,29 @@ import module:
 
 >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
+	>>> m = __import__("7-base_geometry").__doc__
+	>>> len(m) > 1
+	True
+
+	>>> c = __import__("7-base_geometry").BaseGeometry.__doc__
+	>>> len(c) > 1
+	True
+
+
+        >>> f = __import__("7-base_geometry").BaseGeometry.__init__.__doc__
+        >>> len(f) > 1
+        True
+
+
+        >>> f = __import__("7-base_geometry").BaseGeometry.area.__doc__
+        >>> len(f) > 1
+        True
+
+
+        >>> f = __import__("7-base_geometry").BaseGeometry.integer_validator.__doc__
+        >>> len(f) > 1
+        True
+
 >>> bg = BaseGeometry()
 >>> bg.area(5, 5)
 Traceback (most recent call last):
@@ -70,3 +93,59 @@ TypeError: pp must be an integer
     Traceback (most recent call last):
     	      ...
     TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+	>>> bg = BaseGeometry()
+
+	>>> bg.integer_validator("my_int", 12)
+	True
+
+	>>> bg.integer_validator("width", 89)
+	True
+
+	>>> bg.integer_validator("name", "John")
+	Traceback (most recent call last):
+		  ...
+	TypeError: name must be an integer
+
+	>>> bg.integer_validator("age", 0)
+	Traceback (most recent call last):
+		  ...
+	ValueError: age must be greater than 0
+
+    	>>> bg.integer_validator("distance", -4)
+	Traceback (most recent call last):
+		  ...
+	ValueError: distance must be greater than 0
+
+
+	>>> bg.integer_validator("year", 2017.9)
+	Traceback (most recent call last):
+		  ...
+	TypeError: year must be an integer
+
+
+	>>> bg.integer_validator("tup", (8, 9))
+	Traceback (most recent call last):
+		  ...
+	TypeError: tup must be an integer
+
+
+	>>> bg.integer_validator("box", [3, 2])
+	Traceback (most recent call last):
+		  ...
+	TypeError: box must be an integer
+
+
+	>>> bg.integer_validator("None", None)
+	False
+
+	>>> bg.integer_validator("Nan", NaN)
+	Traceback (most recent call last):
+		  ...
+	NameError: name 'NaN' is not defined
+
+
+	>>> bg.integer_validator("infinity", float('inf'))
+	Traceback (most recent call last):
+		  ...
+	TypeError: infinity must be an integer

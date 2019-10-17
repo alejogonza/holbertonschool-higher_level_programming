@@ -19,11 +19,10 @@ def load_add_save(filename, args):
 
     """
     try:
-        newjson = load_from_json_file(filename)
+        new_json_object = load_from_json_file(filename)
     except FileNotFoundError:
-
-        newjson = []
-        newjson = save_to_json_file(newjson + args, filename)
+        new_json_object = []
+    new_json_object = save_to_json_file(new_json_object + args, filename)
 
     if __name__ == "__main__":
         filename = "add_item.json"

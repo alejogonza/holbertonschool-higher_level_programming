@@ -18,9 +18,9 @@ class Square(Rectangle):
         """
         p inst
         """
-        self.integer_validator("square", size)
+        self.integer_validator("size", size)
         self.__size = size
-        super().__init__(size, size)
+        super().__init__(self.size, self.size)
 
     def area(self):
 

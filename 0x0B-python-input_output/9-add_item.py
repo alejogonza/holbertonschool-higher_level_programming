@@ -5,25 +5,18 @@
 """
 
 import sys
+import os.path
+
+load_json_file = __import__('8-load_from_json_file').load_from_json_file
 
 
-load_from_json_file = __import__('8-load_from_json_file').load_from_json_file
+save_json_file = __import__('7-save_to_json_file').save_to_json_file
 
+formater = []
+if os.path.exists("add_item.json"):
+    formater = load_json_file("add_item.json")
 
-save_to_json_file = __import__('7-save_to_json_file').save_to_json_file
+for arg in sys.argv[1:]:
+    formater.append(arg)
 
-
-def load_add_save(filename, args):
-    """
-    script that adds all args to a Python list, and sabe un
-
-    """
-    try:
-        new_json_object = load_from_json_file(filename)
-    except FileNotFoundError:
-        new_json_object = []
-    new_json_object = save_to_json_file(new_json_object + args, filename)
-
-    if __name__ == "__main__":
-        filename = "add_item.json"
-        load_add_save(filename, sys.argv[1:])
+save_json_file(formater, "add_item.json")

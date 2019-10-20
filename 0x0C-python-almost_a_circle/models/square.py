@@ -13,7 +13,15 @@ class Square(Rectangle):
     def __init__(self, size, x=0, y=0, id=None):
         """init square"""
         super().__init__(size, size, x, y, id)
-        self.size = size
+
+    def __str__(self):
+        """ str meth """
+        square = "[Square] "
+        p_id = "({}) ".format(self.id)
+        p_w_h = "{}/{}".format(self.width, self.height)
+        p_x_y = "{}/{} - ".format(self.x, self.y)
+
+        return square + p_id + p_x_y + p_w_h
 
     @property
     def size(self):
@@ -31,43 +39,41 @@ class Square(Rectangle):
         self.height = value
 
     def __str__(self):
-        """
-         rep the square
-        """
-        return "[Square] ({:d}) {:d}/{:d} - {:d}".format(self.id, self.x,
-                                                         self.y, self.width)
+        """ str meth """
+        rectan = "[Square] "
+        p_id = "({}) ".format(self.id)
+        p_x_y = "{}/{} - ".format(self.x, self.y)
+        p_sizes = "{}".format(self.size)
+
+        return rectan + p_id + p_x_y + p_sizes
 
     def update(self, *args, **kwargs):
-        """
-        update attrib
-        """
-        if (len(kwargs) > 0):
+            """ update meth """
+        if args is not None and len(args) is not 0:
+            attb_lst = ['id', 'size', 'x', 'y']
             for i in range(len(args)):
-                if i == 0:
-                    self.id = args[0]
-                if i == 1:
-                    self.size = args[1]
-                if i == 2:
-                    self.x = args[2]
-                if i == 3:
-                    self.y = args[3]
-        elif (len(args) > 0):
-            if (kwargs.get('id') is not None):
-                super().__init__(kwargs.get('id'))
-            if (kwargs.get('size') is not None):
-                self.size = kwargs.get('size')
-            if (kwargs.get('x') is not None):
-                self.x = kwargs.get('x')
-            if (kwargs.get('y') is not None):
-                self.y = kwargs.get('y')
+                if attb_lst[i] == 'size':
+                    setattr(self, 'width', args[i])
+                    setattr(self, 'height', args[i])
+                else:
+                    setattr(self, attb_lst[i], args[i])
+        else:
+            for key, value in kwargs.items():
+                if key == 'size':
+                    setattr(self, 'width', value)
+                    setattr(self, 'height', value)
+                else:
+                    setattr(self, key, value)
 
     def to_dictionary(self):
-        """
-        dictionary
-        """
-        d = {}
-        d["id"] = self.id
-        d["size"] = self.size
-        d["x"] = self.x
-        d["y"] = self.y
-        return d
+        """ Return dict """
+        attb_lst = ['id', 'size', 'x', 'y']
+        res_dicc = {}
+
+        for key in attb_lst:
+            if key == 'size':
+                res_dicc[key] = getattr(self, 'width')
+            else:
+                res_dicc[key] = getattr(self, key)
+
+        return res_dicc

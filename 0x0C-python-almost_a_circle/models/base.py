@@ -54,16 +54,14 @@ class Base:
             f.write(classes.to_json_string(lo))
 
     @classmethod
-    def create(classes, **dictionary):
-        """
-        returns an instance and attributes
-        """
-        if classes.__name__ is "Rectangle":
-            dummy = classes(1, 1)
-        elif classes.__name__ is "Square":
-            dummy = classes(1)
-        dummy.update(**dictionary)
-        return dummy
+    def create(cls, **dictionary):
+        """ instance """
+        if cls.__name__ == "Rectangle":
+            newc = cls(10, 10)
+        else:
+            newc = cls(10)
+        newc.update(**dictionary)
+        return newc
 
     @classmethod
     def load_from_file(classes):

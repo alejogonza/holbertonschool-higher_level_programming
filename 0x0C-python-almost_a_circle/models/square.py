@@ -54,12 +54,12 @@ class Square(Rectangle):
 
     def to_dictionary(self):
         list_atr = ['id', 'size', 'x', 'y']
-        resd = {}
+        dict_res = {}
 
         for key in list_atr:
             if key == 'size':
-                resd[key] = getattr(self, 'width')
+                dict_res[key] = getattr(self, 'width')
             else:
-                resd[key] = getattr(self, key)
+                dict_res[key] = getattr(self, key)
 
-        return resd
+        return dict_res

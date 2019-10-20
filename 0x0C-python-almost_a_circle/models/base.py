@@ -74,13 +74,13 @@ class Base:
         with open(filename, 'r') as f:
             list_str = f.read()
 
-        l_cls = cls.from_json_string(list_str)
-        l_inst = []
+        list_cls = cls.from_json_string(list_str)
+        list_ins = []
 
-        for index in range(len(l_cls)):
-            l_inst.append(cls.create(**l_cls[index]))
+        for index in range(len(list_cls)):
+            list_ins.append(cls.create(**list_cls[index]))
 
-        return l_inst
+        return list_ins
 
     @classmethod
     def save_to_file_csv(classes, list_ob):

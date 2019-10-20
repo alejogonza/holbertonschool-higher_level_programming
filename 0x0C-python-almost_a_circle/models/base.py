@@ -8,6 +8,7 @@ import turtle
 import csv
 import os.path
 
+
 class Base:
     """A base class"""
     __nb_objects = 0

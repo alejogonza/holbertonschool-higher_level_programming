@@ -6,7 +6,6 @@ from models.rectangle import Rectangle
 
 
 class Square(Rectangle):
-    """ Class Rectangle """
 
     def __init__(self, size, x=0, y=0, id=None):
         super().__init__(size, size, x, y, id)
@@ -55,12 +54,12 @@ class Square(Rectangle):
 
     def to_dictionary(self):
         list_atr = ['id', 'size', 'x', 'y']
-        dict_res = {}
+        resd = {}
 
         for key in list_atr:
             if key == 'size':
-                dict_res[key] = getattr(self, 'width')
+                resd[key] = getattr(self, 'width')
             else:
-                dict_res[key] = getattr(self, key)
+                resd[key] = getattr(self, key)
 
-        return dict_res
+        return resd

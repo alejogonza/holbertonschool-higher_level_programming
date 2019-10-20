@@ -65,16 +65,22 @@ class Base:
 
     @classmethod
     def load_from_file(cls):
-        """
-        open and create instance
-        """
-        filename = cls.__name__ + ".json"
-        l2 = []
+        """ open and create instance """
+        filename = "{}.json".format(cls.__name__)
+
+        if os.path.exists(filename) is False:
+            return []
+
         with open(filename, 'r') as f:
-            l2 = cls.from_json_string(f.read())
-        for i, e in enumerate(l):
-            l2[i] = cls.create(**l2[i])
-        return l2
+            list_str = f.read()
+
+        l_cls = cls.from_json_string(list_str)
+        l_inst = []
+
+        for index in range(len(l_cls)):
+            l_inst.append(cls.create(**l_cls[index]))
+
+        return l_inst
 
     @classmethod
     def save_to_file_csv(classes, list_ob):

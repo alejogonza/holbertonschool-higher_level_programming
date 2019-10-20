@@ -12,12 +12,12 @@ class Square(Rectangle):
         super().__init__(size, size, x, y, id)
 
     def __str__(self):
-        p_square = "[Square] "
-        p_id = "({}) ".format(self.id)
-        p_x_y = "{}/{} - ".format(self.x, self.y)
-        p_w_h = "{}/{}".format(self.width, self.height)
+        str_square = "[Square] "
+        str_id = "({}) ".format(self.id)
+        str_xy = "{}/{} - ".format(self.x, self.y)
+        str_wh = "{}/{}".format(self.width, self.height)
 
-        return p_square + p_id + p_x_y + p_w_h
+        return str_square + str_id + str_xy + str_wh
 
     @property
     def size(self):
@@ -29,22 +29,22 @@ class Square(Rectangle):
         self.height = value
 
     def __str__(self):
-        p_rectangle = "[Square] "
-        p_id = "({}) ".format(self.id)
-        p_x_y = "{}/{} - ".format(self.x, self.y)
-        p_sizes = "{}".format(self.size)
+        str_rectangle = "[Square] "
+        str_id = "({}) ".format(self.id)
+        str_xy = "{}/{} - ".format(self.x, self.y)
+        str_size = "{}".format(self.size)
 
-        return p_rectangle + p_id + p_x_y + p_sizes
+        return str_rectangle + str_id + str_xy + str_size
 
     def update(self, *args, **kwargs):
         if args is not None and len(args) is not 0:
-            attrib_list = ['id', 'size', 'x', 'y']
+            list_atr = ['id', 'size', 'x', 'y']
             for i in range(len(args)):
-                if attrib_list[i] == 'size':
+                if list_atr[i] == 'size':
                     setattr(self, 'width', args[i])
                     setattr(self, 'height', args[i])
                 else:
-                    setattr(self, attrib_list[i], args[i])
+                    setattr(self, list_atr[i], args[i])
         else:
             for key, value in kwargs.items():
                 if key == 'size':
@@ -54,13 +54,13 @@ class Square(Rectangle):
                     setattr(self, key, value)
 
     def to_dictionary(self):
-        attrib_lst = ['id', 'size', 'x', 'y']
-        dictin_response = {}
+        list_atr = ['id', 'size', 'x', 'y']
+        dict_res = {}
 
-        for key in attrib_lst:
+        for key in list_atr:
             if key == 'size':
-                dictin_response[key] = getattr(self, 'width')
+                dict_res[key] = getattr(self, 'width')
             else:
-                dictin_response[key] = getattr(self, key)
+                dict_res[key] = getattr(self, key)
 
-        return dictin_response
+        return dict_res

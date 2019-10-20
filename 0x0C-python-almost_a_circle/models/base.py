@@ -64,16 +64,16 @@ class Base:
         return newc
 
     @classmethod
-    def load_from_file(classes):
+    def load_from_file(cls):
         """
         open and create instance
         """
-        filename = classes.__name__ + ".json"
+        filename = cls.__name__ + ".json"
         l2 = []
         with open(filename, 'r') as f:
-            l2 = classes.from_json_string(f.read())
+            l2 = cls.from_json_string(f.read())
         for i, e in enumerate(l):
-            l2[i] = classes.create(**l2[i])
+            l2[i] = cls.create(**l2[i])
         return l2
 
     @classmethod

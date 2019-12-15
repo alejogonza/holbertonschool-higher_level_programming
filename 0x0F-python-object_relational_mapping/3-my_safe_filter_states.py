@@ -14,8 +14,7 @@ if __name__ == "__main__":
                 passwd=argv[2],
                 db=argv[3])
         cursor = DataBase.cursor()
-        cursor.execute("SELECT * FROM states \
-        WHERE name LIKE %s ORDER BY id ASC", (argv[4],))
+        cursor.execute("SELECT * FROM states WHERE name = %s;", (argv[4],))
         res = cursor.fetchall()
         for row in res:
                 print(row)

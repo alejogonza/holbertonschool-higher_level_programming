@@ -17,6 +17,7 @@ if __name__ == "__main__":
         cursor.execute("SELECT * FROM states WHERE name = %s;", (argv[4],))
         res = cursor.fetchall()
         for row in res:
-                print(row)
-                cursor.close()
-                DataBase.close()
+                if row[1] == argv[4]:
+                        print(row)
+                        cursor.close()
+                        DataBase.close()

@@ -9,13 +9,14 @@ if __name__ == "__main__":
 
         if len(argv) != 5:
                 exit(0)
-        
+
         try:
                 DataBase = MySQLdb.connect(
                         host="localhost",
                         port=3306,
                         user=argv[1],
                         passwd=argv[2],
+                        charset="utf8",
                         db=argv[3])
                 cursor = DataBase.cursor()
                 cursor.execute("SELECT * FROM states WHERE name='{}' \

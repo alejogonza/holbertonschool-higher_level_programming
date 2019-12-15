@@ -12,6 +12,7 @@ if __name__ == "__main__":
                 port=3306,
                 user=argv[1],
                 passwd=argv[2],
+                charset="utf8",
                 db=argv[3])
         cursor = DataBase.cursor()
 
@@ -19,7 +20,8 @@ if __name__ == "__main__":
         name LIKE 'N%' ORDER BY id ASC")
         res = cursor.fetchall()
         for row in res:
-                print(row)
+                if row[1][0] == "N":
+                        print(row)
 
         cursor.close()
         DataBase.close()

@@ -1,11 +1,13 @@
 #!/usr/bin/node
-const args = process.argv.slice(2);
-if (+args[0]) {
-  const x = +args[0];
-  const txt = Array(x + 1).join('X');
-  for (const j = 0; j < x; j++) {
-    console.log(txt);
-  }
-} else {
+const size = parseInt(process.argv[2]);
+if (Number.isNaN(size)) {
   console.log('Missing size');
+} else {
+  for (let i = 0, s; i < size; i++) {
+    s = '';
+    for (let j = 0; j < size; j++) {
+      s += 'X';
+    }
+    console.log(s);
+  }
 }

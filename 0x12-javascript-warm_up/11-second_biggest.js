@@ -12,7 +12,7 @@ if (args.length < 2) {
   }
   console.log(nextLargest);
 } else {
-  for (let j = 1; j < args.length; j++) {
+  for (const j = 1; j < args.length; j++) {
     if (args[j] > largest) {
       nextLargest = largest;
       largest = args[j];

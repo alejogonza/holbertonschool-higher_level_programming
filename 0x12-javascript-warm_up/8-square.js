@@ -1,5 +1,5 @@
 #!/usr/bin/node
-let args = process.argv.slice(2);
+const args = process.argv.slice(2);
 if (+args[0]) {
   let x = +args[0];
   let txt = Array(x + 1).join('X');

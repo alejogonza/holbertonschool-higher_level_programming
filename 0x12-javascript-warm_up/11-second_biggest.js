@@ -1,7 +1,7 @@
 #!/usr/bin/node
-let args = process.argv.slice(2);
-let largest = args[0];
-let nextLargest;
+const args = process.argv.slice(2);
+const largest = args[0];
+const nextLargest;
 if (args.length < 2) {
   console.log('0');
 } else if (args.length === 2) {

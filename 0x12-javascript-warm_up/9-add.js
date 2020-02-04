@@ -7,5 +7,5 @@ function add (a, b) {
   }
 }
 
-let args = process.argv.slice(2);
+const args = process.argv.slice(2);
 console.log(add(+args[0], +args[1]));
